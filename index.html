@@ -102,79 +102,40 @@
         </div>
 
         <!-- Dropdown Menu Mobile -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-brand-200 px-4 pt-2 pb-4 space-y-2 shadow-lg">
-            <a href="#tentang" class="block px-3 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600">Tentang Saya</a>
-            <a href="#pendidikan" class="block px-3 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600">Pendidikan</a>
-            <a href="#pengalaman" class="block px-3 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600">Pengalaman Organisasi</a>
-            <a href="#keahlian" class="block px-3 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600">Keahlian & Minat</a>
-            <a href="#kontak" class="block px-3 py-2.5 rounded-xl text-sm font-medium bg-charcoal text-white text-center mt-2">Hubungi Saya</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-brand-200 px-4 pt-2 pb-4 space-y-2 text-sm font-medium text-slate-600">
+            <a href="#tentang" class="block py-2 px-3 rounded-xl hover:bg-brand-50 hover:text-brand-600">Tentang Saya</a>
+            <a href="#pendidikan" class="block py-2 px-3 rounded-xl hover:bg-brand-50 hover:text-brand-600">Pendidikan</a>
+            <a href="#pengalaman" class="block py-2 px-3 rounded-xl hover:bg-brand-50 hover:text-brand-600">Organisasi</a>
+            <a href="#keahlian" class="block py-2 px-3 rounded-xl hover:bg-brand-50 hover:text-brand-600">Keahlian & Minat</a>
+            <a href="#kontak" class="block py-2.5 px-3 rounded-xl bg-charcoal text-white text-center mt-2">Hubungi Saya</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <header class="relative overflow-hidden pt-10 pb-16 sm:pt-16 sm:pb-24">
-        <!-- Dekorasi Latar Belakang -->
         <div class="absolute top-0 right-0 -z-10 w-96 h-96 bg-brand-200/40 rounded-full blur-3xl translate-x-1/3 -translate-y-1/4"></div>
-        <div class="absolute bottom-0 left-0 -z-10 w-80 h-80 bg-amber-100/50 rounded-full blur-3xl -translate-x-1/3 translate-y-1/4"></div>
+        <div class="absolute bottom-0 left-0 -z-10 w-80 h-80 bg-brand-300/30 rounded-full blur-3xl -translate-x-1/3 translate-y-1/4"></div>
 
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
                 
-                <!-- Kolom Foto Profil (Menggunakan file Injiliarompas.jpg) -->
-                <div class="lg:col-span-5 flex flex-col items-center">
-                    <div class="relative group w-64 h-80 sm:w-72 sm:h-96 rounded-3xl p-2 bg-white shadow-xl border border-brand-200/80 rotate-1 hover:rotate-0 transition-all duration-300">
-                        <div class="w-full h-full rounded-2xl overflow-hidden relative bg-brand-100">
-                            <!-- Menggunakan file foto Injiliarompas.jpg jika disimpan satu folder, atau memuat dari memori browser -->
-                            <img 
-                                id="profile-photo" 
-                                src="Injiliarompas.jpg" 
-                                onerror="this.onerror=null; this.src='https://placehold.co/600x800/0047AB/FFFFFF?text=Injilia+Rompas';" 
-                                alt="Injilia Anugerah Lorina Rompas" 
-                                class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                            >
-                            
-                            <!-- Overlay Tombol Ganti Foto Interaktif -->
-                            <label for="photo-upload" class="absolute inset-0 bg-charcoal/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white cursor-pointer p-4 text-center">
-                                <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-2">
-                                    <i data-lucide="camera" class="w-6 h-6 text-white"></i>
-                                </div>
-                                <span class="text-sm font-semibold">Pilih Foto Profil</span>
-                                <span class="text-xs text-brand-100 mt-1">Klik untuk memilih Injiliarompas.jpg atau tekan Ctrl+V</span>
-                            </label>
-                            <input type="file" id="photo-upload" accept="image/*" class="hidden">
-                        </div>
-
-                        <!-- Badge Status -->
-                        <div class="absolute -bottom-4 -right-3 bg-white px-4 py-2 rounded-2xl shadow-lg border border-brand-100 flex items-center gap-2">
-                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                            <span class="text-xs font-semibold text-charcoal">Mahasiswi Manajemen</span>
-                        </div>
-                    </div>
-
-                    <!-- Tombol Bantuan Unggah Foto di Bawah Gambar -->
-                    <button onclick="document.getElementById('photo-upload').click()" class="mt-7 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-brand-200 text-xs font-medium text-brand-800 hover:bg-brand-100 transition-colors shadow-sm">
-                        <i data-lucide="image-plus" class="w-4 h-4 text-brand-600"></i>
-                        <span>Pilih Foto (Injiliarompas.jpg)</span>
-                    </button>
-                </div>
-
                 <!-- Kolom Teks Perkenalan -->
-                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-100 text-brand-800 text-xs font-semibold tracking-wide uppercase">
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-100 border border-brand-200 text-brand-800 text-xs font-semibold tracking-wide uppercase">
                         <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-600"></i>
-                        <span>Universitas Sam Ratulangi</span>
+                        <span>Curriculum Vitae & Profil Pribadi</span>
                     </div>
-
-                    <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-charcoal leading-tight">
-                        Injilia Anugerah <br class="hidden sm:inline">
+                    
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-charcoal leading-tight">
+                        Injilia Anugerah <br class="hidden sm:inline" />
                         <span class="text-brand-600">Lorina Rompas</span>
                     </h1>
-
-                    <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                        Mahasiswa Program Studi Manajemen, Fakultas Ekonomi dan Bisnis Universitas Sam Ratulangi. Memiliki motivasi tinggi untuk belajar serta mengembangkan diri di bidang manajemen dan dunia bisnis. Terbuka terhadap pengalaman baru, cepat beradaptasi, dan berkomitmen membangun keterampilan kepemimpinan, komunikasi, serta kerja sama tim.
+                    
+                    <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Mahasiswa Program Studi Manajemen, Fakultas Ekonomi dan Bisnis Universitas Sam Ratulangi. Memiliki motivasi tinggi untuk belajar serta mengembangkan diri di bidang manajemen dan dunia bisnis. Terbuka terhadap pengalaman baru, cepat beradaptasi, dan berkomitmen untuk membangun keterampilan kepemimpinan, komunikasi, serta kerja sama tim.
                     </p>
 
-                    <!-- Tombol Aksi Cepat -->
+                    <!-- Tombol Aksi -->
                     <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
                         <a href="#kontak" class="px-6 py-3.5 rounded-2xl bg-charcoal text-white font-medium text-sm hover:bg-brand-600 transition-all shadow-md hover:shadow-lg flex items-center gap-2">
                             <i data-lucide="mail" class="w-4 h-4"></i>
@@ -182,14 +143,54 @@
                         </a>
                         <a href="#pengalaman" class="px-6 py-3.5 rounded-2xl bg-white text-charcoal border border-brand-200 font-medium text-sm hover:bg-brand-100 transition-all flex items-center gap-2">
                             <i data-lucide="briefcase" class="w-4 h-4 text-brand-600"></i>
-                            <span>Lihat Pengalaman</span>
+                            <span>Pengalaman Organisasi</span>
                         </a>
-                        <a href="https://instagram.com/injiliarompas_" target="_blank" rel="noopener noreferrer" class="p-3.5 rounded-2xl bg-white text-charcoal border border-brand-200 hover:text-pink-600 hover:border-pink-200 transition-all" aria-label="Instagram">
-                            <i data-lucide="instagram" class="w-5 h-5"></i>
-                        </a>
-                        <a href="https://facebook.com/search/top?q=Injilia%20Rompas" target="_blank" rel="noopener noreferrer" class="p-3.5 rounded-2xl bg-white text-charcoal border border-brand-200 hover:text-blue-600 hover:border-blue-200 transition-all" aria-label="Facebook">
-                            <i data-lucide="facebook" class="w-5 h-5"></i>
-                        </a>
+                    </div>
+                </div>
+
+                <!-- Kolom Foto Profil (Menggunakan injiliarompas.jpg) -->
+                <div class="lg:col-span-5 flex flex-col items-center">
+                    <label for="photo-upload" class="relative group w-64 h-80 sm:w-72 sm:h-96 rounded-3xl p-2 bg-white shadow-xl border border-brand-200/80 rotate-1 hover:rotate-0 transition-all duration-300 cursor-pointer block" id="photo-dropzone" title="Ketuk untuk memilih foto injiliarompas.jpg">
+                        <div class="w-full h-full rounded-2xl overflow-hidden relative bg-brand-100 flex flex-col items-center justify-center">
+                            <!-- Referensi langsung ke file injiliarompas.jpg -->
+                            <img 
+                                id="profile-photo" 
+                                src="injiliarompas.jpg" 
+                                alt="Injilia Anugerah Lorina Rompas" 
+                                class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105 relative z-10"
+                                onerror="this.style.opacity='0'"
+                            >
+                            
+                            <!-- Panduan di dalam bingkai jika foto belum dipilih di mode Preview -->
+                            <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-brand-800 bg-brand-100/90">
+                                <div class="w-14 h-14 rounded-2xl bg-white text-brand-600 shadow-sm flex items-center justify-center mb-3">
+                                    <i data-lucide="camera" class="w-7 h-7"></i>
+                                </div>
+                                <span class="font-bold text-sm text-charcoal">Ketuk Bingkai Ini</span>
+                                <span class="text-xs text-slate-600 mt-1">untuk menampilkan foto <br><strong class="text-brand-700">injiliarompas.jpg</strong> di layar ini</span>
+                            </div>
+
+                            <!-- Overlay Hover -->
+                            <div class="absolute inset-0 z-20 bg-charcoal/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white p-4 text-center">
+                                <i data-lucide="camera" class="w-7 h-7 mb-2"></i>
+                                <span class="text-sm font-semibold">Ganti Foto Profil</span>
+                            </div>
+                        </div>
+
+                        <!-- Badge Status -->
+                        <div class="absolute -bottom-4 -right-3 z-30 bg-white px-4 py-2 rounded-2xl shadow-lg border border-brand-100 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span class="text-xs font-semibold text-charcoal">Mahasiswi Manajemen</span>
+                        </div>
+                    </label>
+                    <input type="file" id="photo-upload" accept="image/*" class="hidden">
+
+                    <!-- Tombol Bantuan Unggah Foto di Bawah Gambar -->
+                    <div class="mt-7 flex flex-col items-center gap-1.5">
+                        <button type="button" onclick="document.getElementById('photo-upload').click()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-charcoal text-white text-xs font-semibold hover:bg-brand-600 transition-colors shadow-sm">
+                            <i data-lucide="image-plus" class="w-4 h-4"></i>
+                            <span>Pilih Foto (injiliarompas.jpg)</span>
+                        </button>
                     </div>
                 </div>
 
@@ -648,7 +649,8 @@
         // Fitur Muat & Simpan Permanen Foto Profil Terbaru di Browser
         const photoUploadInput = document.getElementById('photo-upload');
         const profilePhotoImg = document.getElementById('profile-photo');
-        const STORAGE_KEY = 'injilia_profile_photo_v3';
+        const photoDropzone = document.getElementById('photo-dropzone');
+        const STORAGE_KEY = 'injilia_profile_photo_v4';
 
         // Muat foto dari localStorage jika sebelumnya sudah dipilih di Preview
         window.addEventListener('DOMContentLoaded', () => {
@@ -656,6 +658,7 @@
                 const savedPhoto = localStorage.getItem(STORAGE_KEY);
                 if (savedPhoto) {
                     profilePhotoImg.src = savedPhoto;
+                    profilePhotoImg.style.opacity = '1';
                 }
             } catch (e) {
                 console.warn('Penyimpanan lokal tidak tersedia.');
@@ -669,12 +672,13 @@
             reader.onload = function(e) {
                 const dataUrl = e.target.result;
                 profilePhotoImg.src = dataUrl;
+                profilePhotoImg.style.opacity = '1';
                 try {
                     localStorage.setItem(STORAGE_KEY, dataUrl);
                 } catch (err) {
                     // Tetap tampil meskipun ukuran melebihi batas localStorage
                 }
-                showToast('Foto profil berhasil dipasang!');
+                showToast('Foto injiliarompas.jpg berhasil ditampilkan!');
             };
             reader.readAsDataURL(file);
         }
@@ -683,6 +687,24 @@
         photoUploadInput.addEventListener('change', function(event) {
             applyProfileImage(event.target.files[0]);
         });
+
+        // Event Drag & Drop foto langsung ke bingkai foto
+        if (photoDropzone) {
+            photoDropzone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                photoDropzone.classList.add('ring-4', 'ring-brand-400');
+            });
+            photoDropzone.addEventListener('dragleave', () => {
+                photoDropzone.classList.remove('ring-4', 'ring-brand-400');
+            });
+            photoDropzone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                photoDropzone.classList.remove('ring-4', 'ring-brand-400');
+                if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                    applyProfileImage(e.dataTransfer.files[0]);
+                }
+            });
+        }
 
         // Event saat menempel gambar langsung (Paste / Ctrl+V) di halaman
         window.addEventListener('paste', function(event) {
