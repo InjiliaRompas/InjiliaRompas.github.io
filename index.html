@@ -120,17 +120,17 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
                 
-                <!-- Kolom Foto Profil (Bisa langsung unggah foto terbaru 1000505772.jpg) -->
+                <!-- Kolom Foto Profil (Menggunakan file Desain tanpa judul_20260821_092659_0000.jpg) -->
                 <div class="lg:col-span-5 flex flex-col items-center">
                     <div class="relative group w-64 h-80 sm:w-72 sm:h-96 rounded-3xl p-2 bg-white shadow-xl border border-brand-200/80 rotate-1 hover:rotate-0 transition-all duration-300">
                         <div class="w-full h-full rounded-2xl overflow-hidden relative bg-brand-100">
-                            <!-- Menggunakan file foto terbaru jika tersedia di folder yang sama, atau fallback ke placeholder elegan -->
+                            <!-- Menggunakan file foto Desain tanpa judul_20260821_092659_0000.jpg jika disimpan satu folder, atau memuat dari memori browser -->
                             <img 
                                 id="profile-photo" 
-                                src="1000505772.jpg" 
-                                onerror="this.onerror=null; this.src='https://placehold.co/600x800/eaddd7/4a3730?text=Injilia+Rompas';" 
+                                src="Desain tanpa judul_20260821_092659_0000.jpg" 
+                                onerror="this.onerror=null; this.src='https://placehold.co/600x800/0047AB/FFFFFF?text=Injilia+Rompas';" 
                                 alt="Injilia Anugerah Lorina Rompas" 
-                                class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                                class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                             >
                             
                             <!-- Overlay Tombol Ganti Foto Interaktif -->
@@ -138,8 +138,8 @@
                                 <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-2">
                                     <i data-lucide="camera" class="w-6 h-6 text-white"></i>
                                 </div>
-                                <span class="text-sm font-semibold">Muat Foto Terbaru</span>
-                                <span class="text-xs text-brand-100 mt-1">Pilih file 1000505772.jpg dari perangkat Anda</span>
+                                <span class="text-sm font-semibold">Pilih Foto Profil</span>
+                                <span class="text-xs text-brand-100 mt-1">Klik untuk memilih Desain tanpa judul_20260821_092659_0000.jpg atau tekan Ctrl+V</span>
                             </label>
                             <input type="file" id="photo-upload" accept="image/*" class="hidden">
                         </div>
@@ -154,7 +154,7 @@
                     <!-- Tombol Bantuan Unggah Foto di Bawah Gambar -->
                     <button onclick="document.getElementById('photo-upload').click()" class="mt-7 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-brand-200 text-xs font-medium text-brand-800 hover:bg-brand-100 transition-colors shadow-sm">
                         <i data-lucide="image-plus" class="w-4 h-4 text-brand-600"></i>
-                        <span>Pasang Foto Terbaru (1000505772.jpg)</span>
+                        <span>Pilih Foto (Desain tanpa judul_20260821_092659_0000.jpg)</span>
                     </button>
                 </div>
 
@@ -645,19 +645,55 @@
             document.body.removeChild(tempInput);
         }
 
-        // Fitur Ganti / Muat Foto Profil Terbaru (1000505772.jpg) secara langsung di browser
+        // Fitur Muat & Simpan Permanen Foto Profil Terbaru di Browser
         const photoUploadInput = document.getElementById('photo-upload');
         const profilePhotoImg = document.getElementById('profile-photo');
+        const STORAGE_KEY = 'injilia_profile_photo_v3';
 
+        // Muat foto dari localStorage jika sebelumnya sudah dipilih di Preview
+        window.addEventListener('DOMContentLoaded', () => {
+            try {
+                const savedPhoto = localStorage.getItem(STORAGE_KEY);
+                if (savedPhoto) {
+                    profilePhotoImg.src = savedPhoto;
+                }
+            } catch (e) {
+                console.warn('Penyimpanan lokal tidak tersedia.');
+            }
+        });
+
+        // Fungsi memproses file gambar dan menyimpannya
+        function applyProfileImage(file) {
+            if (!file || !file.type.startsWith('image/')) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const dataUrl = e.target.result;
+                profilePhotoImg.src = dataUrl;
+                try {
+                    localStorage.setItem(STORAGE_KEY, dataUrl);
+                } catch (err) {
+                    // Tetap tampil meskipun ukuran melebihi batas localStorage
+                }
+                showToast('Foto profil berhasil dipasang!');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Event saat memilih file lewat tombol/klik foto
         photoUploadInput.addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    profilePhotoImg.src = e.target.result;
-                    showToast('Foto profil berhasil diperbarui!');
-                };
-                reader.readAsDataURL(file);
+            applyProfileImage(event.target.files[0]);
+        });
+
+        // Event saat menempel gambar langsung (Paste / Ctrl+V) di halaman
+        window.addEventListener('paste', function(event) {
+            const items = (event.clipboardData || event.originalEvent.clipboardData).items;
+            for (let index in items) {
+                const item = items[index];
+                if (item.kind === 'file') {
+                    const blob = item.getAsFile();
+                    applyProfileImage(blob);
+                    break;
+                }
             }
         });
     </script>
