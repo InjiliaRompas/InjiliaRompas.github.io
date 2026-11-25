@@ -1,1 +1,666 @@
+```html
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Injilia Anugerah Lorina Rompas - Profil & Portofolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fdf8f6',
+                            100: '#f2e8e5',
+                            200: '#eaddd7',
+                            300: '#e0cec7',
+                            400: '#d2bab0',
+                            500: '#a38071',
+                            600: '#8a685a',
+                            700: '#6f5246',
+                            800: '#4a3730',
+                            900: '#2d211d',
+                        },
+                        charcoal: '#292929'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Kustomisasi scrollbar halus */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fdf8f6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d2bab0;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a38071;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-brand-50 text-slate-800 antialiased selection:bg-brand-200 selection:text-brand-900">
 
+    <!-- Notifikasi Toast (Pengganti alert) -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-charcoal text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-700">
+            <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400"></i>
+            <span id="toast-message" class="text-sm font-medium">Pesan notifikasi</span>
+        </div>
+    </div>
+
+    <!-- Navigasi Utama -->
+    <nav class="sticky top-0 z-40 glass-card border-b border-brand-200/60 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo / Inisial -->
+                <a href="#" class="flex items-center gap-2.5 group">
+                    <div class="w-9 h-9 rounded-xl bg-charcoal text-white flex items-center justify-center font-serif font-bold text-lg group-hover:bg-brand-600 transition-colors">
+                        IR
+                    </div>
+                    <span class="font-serif font-bold text-lg text-charcoal tracking-tight hidden sm:block">Injilia Rompas</span>
+                </a>
+
+                <!-- Menu Desktop -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600">
+                    <a href="#tentang" class="hover:text-brand-600 transition-colors">Tentang Saya</a>
+                    <a href="#pendidikan" class="hover:text-brand-600 transition-colors">Pendidikan</a>
+                    <a href="#pengalaman" class="hover:text-brand-600 transition-colors">Organisasi</a>
+                    <a href="#keahlian" class="hover:text-brand-600 transition-colors">Keahlian & Minat</a>
+                    <a href="#kontak" class="px-4 py-2 rounded-xl bg-charcoal text-white hover:bg-brand-600 transition-colors shadow-sm">Hubungi Saya</a>
+                </div>
+
+                <!-- Tombol Menu Mobile -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-xl text-slate-600 hover:bg-brand-100 transition-colors" aria-label="Buka Menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Dropdown Menu Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-brand-200 px-4 pt-2 pb-4 space-y-2 shadow-lg">
+            <a href="#tentang" class="block px-3 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600">Tentang Saya</a>
+            <a href="#pendidikan" class="block px-3 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600">Pendidikan</a>
+            <a href="#pengalaman" class="block px-3 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600">Pengalaman Organisasi</a>
+            <a href="#keahlian" class="block px-3 py-2.5 rounded-xl text-sm font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600">Keahlian & Minat</a>
+            <a href="#kontak" class="block px-3 py-2.5 rounded-xl text-sm font-medium bg-charcoal text-white text-center mt-2">Hubungi Saya</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative overflow-hidden pt-10 pb-16 sm:pt-16 sm:pb-24">
+        <!-- Dekorasi Latar Belakang -->
+        <div class="absolute top-0 right-0 -z-10 w-96 h-96 bg-brand-200/40 rounded-full blur-3xl translate-x-1/3 -translate-y-1/4"></div>
+        <div class="absolute bottom-0 left-0 -z-10 w-80 h-80 bg-amber-100/50 rounded-full blur-3xl -translate-x-1/3 translate-y-1/4"></div>
+
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                
+                <!-- Kolom Foto Profil (Bisa langsung unggah foto terbaru 1000505772.jpg) -->
+                <div class="lg:col-span-5 flex flex-col items-center">
+                    <div class="relative group w-64 h-80 sm:w-72 sm:h-96 rounded-3xl p-2 bg-white shadow-xl border border-brand-200/80 rotate-1 hover:rotate-0 transition-all duration-300">
+                        <div class="w-full h-full rounded-2xl overflow-hidden relative bg-brand-100">
+                            <!-- Menggunakan file foto terbaru jika tersedia di folder yang sama, atau fallback ke placeholder elegan -->
+                            <img 
+                                id="profile-photo" 
+                                src="1000505772.jpg" 
+                                onerror="this.onerror=null; this.src='https://placehold.co/600x800/eaddd7/4a3730?text=Injilia+Rompas';" 
+                                alt="Injilia Anugerah Lorina Rompas" 
+                                class="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                            >
+                            
+                            <!-- Overlay Tombol Ganti Foto Interaktif -->
+                            <label for="photo-upload" class="absolute inset-0 bg-charcoal/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white cursor-pointer p-4 text-center">
+                                <div class="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-2">
+                                    <i data-lucide="camera" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <span class="text-sm font-semibold">Muat Foto Terbaru</span>
+                                <span class="text-xs text-brand-100 mt-1">Pilih file 1000505772.jpg dari perangkat Anda</span>
+                            </label>
+                            <input type="file" id="photo-upload" accept="image/*" class="hidden">
+                        </div>
+
+                        <!-- Badge Status -->
+                        <div class="absolute -bottom-4 -right-3 bg-white px-4 py-2 rounded-2xl shadow-lg border border-brand-100 flex items-center gap-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                            <span class="text-xs font-semibold text-charcoal">Mahasiswi Manajemen</span>
+                        </div>
+                    </div>
+
+                    <!-- Tombol Bantuan Unggah Foto di Bawah Gambar -->
+                    <button onclick="document.getElementById('photo-upload').click()" class="mt-7 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-brand-200 text-xs font-medium text-brand-800 hover:bg-brand-100 transition-colors shadow-sm">
+                        <i data-lucide="image-plus" class="w-4 h-4 text-brand-600"></i>
+                        <span>Pasang Foto Terbaru (1000505772.jpg)</span>
+                    </button>
+                </div>
+
+                <!-- Kolom Teks Perkenalan -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-100 text-brand-800 text-xs font-semibold tracking-wide uppercase">
+                        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-600"></i>
+                        <span>Universitas Sam Ratulangi</span>
+                    </div>
+
+                    <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold text-charcoal leading-tight">
+                        Injilia Anugerah <br class="hidden sm:inline">
+                        <span class="text-brand-600">Lorina Rompas</span>
+                    </h1>
+
+                    <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Mahasiswa Program Studi Manajemen, Fakultas Ekonomi dan Bisnis Universitas Sam Ratulangi. Memiliki motivasi tinggi untuk belajar serta mengembangkan diri di bidang manajemen dan dunia bisnis. Terbuka terhadap pengalaman baru, cepat beradaptasi, dan berkomitmen membangun keterampilan kepemimpinan, komunikasi, serta kerja sama tim.
+                    </p>
+
+                    <!-- Tombol Aksi Cepat -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
+                        <a href="#kontak" class="px-6 py-3.5 rounded-2xl bg-charcoal text-white font-medium text-sm hover:bg-brand-600 transition-all shadow-md hover:shadow-lg flex items-center gap-2">
+                            <i data-lucide="mail" class="w-4 h-4"></i>
+                            <span>Hubungi Saya</span>
+                        </a>
+                        <a href="#pengalaman" class="px-6 py-3.5 rounded-2xl bg-white text-charcoal border border-brand-200 font-medium text-sm hover:bg-brand-100 transition-all flex items-center gap-2">
+                            <i data-lucide="briefcase" class="w-4 h-4 text-brand-600"></i>
+                            <span>Lihat Pengalaman</span>
+                        </a>
+                        <a href="https://instagram.com/injiliarompas_" target="_blank" rel="noopener noreferrer" class="p-3.5 rounded-2xl bg-white text-charcoal border border-brand-200 hover:text-pink-600 hover:border-pink-200 transition-all" aria-label="Instagram">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://facebook.com/search/top?q=Injilia%20Rompas" target="_blank" rel="noopener noreferrer" class="p-3.5 rounded-2xl bg-white text-charcoal border border-brand-200 hover:text-blue-600 hover:border-blue-200 transition-all" aria-label="Facebook">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Konten Utama -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 pb-24">
+
+        <!-- Section: Data Pribadi & Ringkasan -->
+        <section id="tentang" class="scroll-mt-24">
+            <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-brand-200/70">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-10 h-10 rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center">
+                        <i data-lucide="user-check" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-charcoal">Data Pribadi</h2>
+                        <p class="text-xs sm:text-sm text-slate-500">Informasi biodata lengkap sesuai Curriculum Vitae</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Item Biodata -->
+                    <div class="p-4 rounded-2xl bg-brand-50/70 border border-brand-100 flex items-start gap-3.5">
+                        <div class="p-2.5 rounded-xl bg-white text-brand-600 shadow-xs shrink-0">
+                            <i data-lucide="calendar" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">Tempat, Tanggal Lahir</span>
+                            <p class="font-semibold text-charcoal mt-0.5">Tomohon, 21 November 2006</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-brand-50/70 border border-brand-100 flex items-start gap-3.5">
+                        <div class="p-2.5 rounded-xl bg-white text-brand-600 shadow-xs shrink-0">
+                            <i data-lucide="user" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">Jenis Kelamin</span>
+                            <p class="font-semibold text-charcoal mt-0.5">Perempuan</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-brand-50/70 border border-brand-100 flex items-start gap-3.5">
+                        <div class="p-2.5 rounded-xl bg-white text-brand-600 shadow-xs shrink-0">
+                            <i data-lucide="heart" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">Agama</span>
+                            <p class="font-semibold text-charcoal mt-0.5">Kristen Protestan</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-brand-50/70 border border-brand-100 flex items-start gap-3.5">
+                        <div class="p-2.5 rounded-xl bg-white text-brand-600 shadow-xs shrink-0">
+                            <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">Status</span>
+                            <p class="font-semibold text-charcoal mt-0.5">Mahasiswa</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-brand-50/70 border border-brand-100 flex items-start gap-3.5">
+                        <div class="p-2.5 rounded-xl bg-white text-brand-600 shadow-xs shrink-0">
+                            <i data-lucide="flag" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">Kewarganegaraan</span>
+                            <p class="font-semibold text-charcoal mt-0.5">Indonesia</p>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-brand-50/70 border border-brand-100 flex items-start gap-3.5">
+                        <div class="p-2.5 rounded-xl bg-white text-brand-600 shadow-xs shrink-0">
+                            <i data-lucide="map-pin" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs font-medium text-slate-400 uppercase tracking-wider">Domisili</span>
+                            <p class="font-semibold text-charcoal mt-0.5 text-sm">Wuwuk Barat, Jaga 3, Kec. Tareran, Kab. Minahasa Selatan, Sulawesi Utara</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Pendidikan & Pengalaman Organisasi (2 Kolom pada Desktop) -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            
+            <!-- Kolom Pendidikan -->
+            <section id="pendidikan" class="scroll-mt-24">
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-brand-200/70 h-full">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-10 h-10 rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center">
+                            <i data-lucide="book-open" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h2 class="font-serif text-2xl font-bold text-charcoal">Riwayat Pendidikan</h2>
+                            <p class="text-xs text-slate-500">Perjalanan akademik dari dasar hingga perguruan tinggi</p>
+                        </div>
+                    </div>
+
+                    <div class="relative border-l-2 border-brand-200 ml-3.5 space-y-8 pb-2">
+                        <!-- Universitas -->
+                        <div class="relative pl-7">
+                            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-600 ring-4 ring-brand-100"></span>
+                            <span class="inline-block px-2.5 py-0.5 rounded-lg bg-brand-100 text-brand-800 text-xs font-bold mb-1.5">2025 - Sekarang</span>
+                            <h3 class="font-bold text-lg text-charcoal">Universitas Sam Ratulangi</h3>
+                            <p class="text-sm font-medium text-brand-700">Program Studi Manajemen, Fakultas Ekonomi dan Bisnis</p>
+                        </div>
+
+                        <!-- SMA -->
+                        <div class="relative pl-7">
+                            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-300 ring-4 ring-white"></span>
+                            <span class="inline-block px-2.5 py-0.5 rounded-lg bg-slate-100 text-slate-600 text-xs font-semibold mb-1.5">2021 - 2024</span>
+                            <h3 class="font-bold text-base text-charcoal">Sekolah Menengah Atas (SMA)</h3>
+                            <p class="text-sm text-slate-600">SMA Negeri 2 Tareran — Jurusan IPA</p>
+                        </div>
+
+                        <!-- SMP -->
+                        <div class="relative pl-7">
+                            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-300 ring-4 ring-white"></span>
+                            <span class="inline-block px-2.5 py-0.5 rounded-lg bg-slate-100 text-slate-600 text-xs font-semibold mb-1.5">2019 - 2021</span>
+                            <h3 class="font-bold text-base text-charcoal">Sekolah Menengah Pertama (SMP)</h3>
+                            <p class="text-sm text-slate-600">SMP Negeri 2 Tareran</p>
+                        </div>
+
+                        <!-- SD -->
+                        <div class="relative pl-7">
+                            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-brand-300 ring-4 ring-white"></span>
+                            <span class="inline-block px-2.5 py-0.5 rounded-lg bg-slate-100 text-slate-600 text-xs font-semibold mb-1.5">2013 - 2019</span>
+                            <h3 class="font-bold text-base text-charcoal">Sekolah Dasar (SD)</h3>
+                            <p class="text-sm text-slate-600">SD Negeri Wuwuk</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Kolom Pengalaman Organisasi & Kepanitiaan -->
+            <section id="pengalaman" class="scroll-mt-24">
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-brand-200/70 h-full">
+                    <div class="flex items-center gap-3 mb-8">
+                        <div class="w-10 h-10 rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center">
+                            <i data-lucide="award" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h2 class="font-serif text-2xl font-bold text-charcoal">Organisasi & Kepanitiaan</h2>
+                            <p class="text-xs text-slate-500">Rekam jejak kepemimpinan dan pengelolaan keuangan</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Pengalaman 1 -->
+                        <div class="p-4 rounded-2xl bg-brand-50/60 hover:bg-brand-50 border border-brand-100 transition-colors flex items-start justify-between gap-4">
+                            <div>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="px-2.5 py-0.5 rounded-md bg-charcoal text-white text-xs font-bold">2024</span>
+                                    <span class="text-xs font-semibold text-brand-700 bg-brand-100 px-2.5 py-0.5 rounded-md">Bendahara</span>
+                                </div>
+                                <h3 class="font-bold text-charcoal text-base">Panitia Tahunan Pemuda</h3>
+                            </div>
+                            <i data-lucide="wallet" class="w-5 h-5 text-brand-500 shrink-0 mt-1"></i>
+                        </div>
+
+                        <!-- Pengalaman 2 -->
+                        <div class="p-4 rounded-2xl bg-brand-50/60 hover:bg-brand-50 border border-brand-100 transition-colors flex items-start justify-between gap-4">
+                            <div>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="px-2.5 py-0.5 rounded-md bg-charcoal text-white text-xs font-bold">2023</span>
+                                    <span class="text-xs font-semibold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-md">Ketua Panitia</span>
+                                </div>
+                                <h3 class="font-bold text-charcoal text-base">Panitia Tahunan Remaja</h3>
+                            </div>
+                            <i data-lucide="crown" class="w-5 h-5 text-amber-600 shrink-0 mt-1"></i>
+                        </div>
+
+                        <!-- Pengalaman 3 -->
+                        <div class="p-4 rounded-2xl bg-brand-50/60 hover:bg-brand-50 border border-brand-100 transition-colors flex items-start justify-between gap-4">
+                            <div>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="px-2.5 py-0.5 rounded-md bg-slate-700 text-white text-xs font-bold">2022</span>
+                                    <span class="text-xs font-semibold text-brand-700 bg-brand-100 px-2.5 py-0.5 rounded-md">Bendahara</span>
+                                </div>
+                                <h3 class="font-bold text-charcoal text-base">Panitia Tahunan Remaja</h3>
+                            </div>
+                            <i data-lucide="wallet" class="w-5 h-5 text-brand-500 shrink-0 mt-1"></i>
+                        </div>
+
+                        <!-- Pengalaman 4 -->
+                        <div class="p-4 rounded-2xl bg-brand-50/60 hover:bg-brand-50 border border-brand-100 transition-colors flex items-start justify-between gap-4">
+                            <div>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="px-2.5 py-0.5 rounded-md bg-slate-700 text-white text-xs font-bold">2022</span>
+                                    <span class="text-xs font-semibold text-brand-700 bg-brand-100 px-2.5 py-0.5 rounded-md">Bendahara</span>
+                                </div>
+                                <h3 class="font-bold text-charcoal text-base">Organisasi Siswa Intra Sekolah (OSIS) SMA</h3>
+                            </div>
+                            <i data-lucide="users" class="w-5 h-5 text-brand-500 shrink-0 mt-1"></i>
+                        </div>
+
+                        <!-- Pengalaman 5 -->
+                        <div class="p-4 rounded-2xl bg-brand-50/60 hover:bg-brand-50 border border-brand-100 transition-colors flex items-start justify-between gap-4">
+                            <div>
+                                <div class="flex items-center gap-2 mb-1">
+                                    <span class="px-2.5 py-0.5 rounded-md bg-slate-600 text-white text-xs font-bold">2020</span>
+                                    <span class="text-xs font-semibold text-brand-700 bg-brand-100 px-2.5 py-0.5 rounded-md">Bendahara</span>
+                                </div>
+                                <h3 class="font-bold text-charcoal text-base">Organisasi Siswa Intra Sekolah (OSIS) SMP</h3>
+                            </div>
+                            <i data-lucide="users" class="w-5 h-5 text-brand-500 shrink-0 mt-1"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Section: Keahlian & Hobi -->
+        <section id="keahlian" class="scroll-mt-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Kartu Keahlian -->
+                <div class="bg-charcoal text-white rounded-3xl p-6 sm:p-8 shadow-lg">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-2xl bg-white/10 text-brand-300 flex items-center justify-center">
+                            <i data-lucide="zap" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h2 class="font-serif text-2xl font-bold">Keahlian Utama</h2>
+                            <p class="text-xs text-slate-400">Kompetensi personal & teknis</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                            <i data-lucide="message-square" class="w-6 h-6 text-brand-300 mb-3"></i>
+                            <h3 class="font-semibold text-base">Komunikasi</h3>
+                            <p class="text-xs text-slate-400 mt-1">Penyampaian ide efektif & interpersonal yang baik</p>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                            <i data-lucide="clock" class="w-6 h-6 text-brand-300 mb-3"></i>
+                            <h3 class="font-semibold text-base">Manajemen Waktu</h3>
+                            <p class="text-xs text-slate-400 mt-1">Disiplin, terstruktur, dan tepat sasaran</p>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                            <i data-lucide="file-spreadsheet" class="w-6 h-6 text-brand-300 mb-3"></i>
+                            <h3 class="font-semibold text-base">Microsoft Office</h3>
+                            <p class="text-xs text-slate-400 mt-1">Mahir menggunakan Word dan PowerPoint</p>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                            <i data-lucide="trending-up" class="w-6 h-6 text-brand-300 mb-3"></i>
+                            <h3 class="font-semibold text-base">Kemauan Belajar Tinggi</h3>
+                            <p class="text-xs text-slate-400 mt-1">Adaptif terhadap wawasan dan tantangan baru</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kartu Hobi & Minat -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-brand-200/70">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center">
+                            <i data-lucide="compass" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <h2 class="font-serif text-2xl font-bold text-charcoal">Hobi & Minat</h2>
+                            <p class="text-xs text-slate-500">Aktivitas kreatif, olahraga, dan pengembangan diri</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3.5">
+                        <div class="flex items-center gap-4 p-3.5 rounded-2xl bg-brand-50/80 border border-brand-100">
+                            <div class="w-10 h-10 rounded-xl bg-white text-brand-600 flex items-center justify-center shadow-xs shrink-0">
+                                <i data-lucide="palette" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-charcoal text-sm">Menggambar</h3>
+                                <p class="text-xs text-slate-500">Seni visual & kreativitas</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-3.5 rounded-2xl bg-brand-50/80 border border-brand-100">
+                            <div class="w-10 h-10 rounded-xl bg-white text-brand-600 flex items-center justify-center shadow-xs shrink-0">
+                                <i data-lucide="trophy" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-charcoal text-sm">Olahraga</h3>
+                                <p class="text-xs text-slate-500">Sepak bola, voli, dan tenis meja</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-3.5 rounded-2xl bg-brand-50/80 border border-brand-100">
+                            <div class="w-10 h-10 rounded-xl bg-white text-brand-600 flex items-center justify-center shadow-xs shrink-0">
+                                <i data-lucide="music" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-charcoal text-sm">Rebana</h3>
+                                <p class="text-xs text-slate-500">Seni musik & kekompakan ritme</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4 p-3.5 rounded-2xl bg-brand-50/80 border border-brand-100">
+                            <div class="w-10 h-10 rounded-xl bg-white text-brand-600 flex items-center justify-center shadow-xs shrink-0">
+                                <i data-lucide="rocket" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-charcoal text-sm">Pengembangan Diri & Kepemimpinan</h3>
+                                <p class="text-xs text-slate-500">Peningkatan kapasitas diri dan manajerial</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Section: Kontak & Sosial Media -->
+        <section id="kontak" class="scroll-mt-24">
+            <div class="bg-gradient-to-br from-brand-800 to-charcoal text-white rounded-3xl p-8 sm:p-12 shadow-xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3"></div>
+                
+                <div class="relative z-10 max-w-3xl mx-auto text-center space-y-4 mb-10">
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold">Mari Terhubung</h2>
+                    <p class="text-brand-200 text-sm sm:text-base">
+                        Silakan hubungi saya untuk diskusi, kolaborasi kegiatan mahasiswa, maupun peluang pengembangan diri lainnya.
+                    </p>
+                </div>
+
+                <div class="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Telepon / WhatsApp -->
+                    <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/15 transition-all">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center mb-4">
+                                <i data-lucide="phone" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-xs text-brand-200 uppercase tracking-wider">Telepon / WA</span>
+                            <p class="font-semibold text-base mt-1">082349134341</p>
+                        </div>
+                        <button onclick="copyText('082349134341', 'Nomor telepon berhasil disalin!')" class="mt-4 w-full py-2 px-3 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-medium flex items-center justify-center gap-1.5 transition-colors">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                            <span>Salin Nomor</span>
+                        </button>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/15 transition-all">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-300 flex items-center justify-center mb-4">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-xs text-brand-200 uppercase tracking-wider">Email</span>
+                            <p class="font-semibold text-sm mt-1 break-all">injiliarompas12@gmail.com</p>
+                        </div>
+                        <button onclick="copyText('injiliarompas12@gmail.com', 'Alamat email berhasil disalin!')" class="mt-4 w-full py-2 px-3 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-medium flex items-center justify-center gap-1.5 transition-colors">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                            <span>Salin Email</span>
+                        </button>
+                    </div>
+
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/injiliarompas_" target="_blank" rel="noopener noreferrer" class="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/15 transition-all group">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-pink-500/20 text-pink-300 flex items-center justify-center mb-4">
+                                <i data-lucide="instagram" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-xs text-brand-200 uppercase tracking-wider">Instagram</span>
+                            <p class="font-semibold text-base mt-1">@injiliarompas_</p>
+                        </div>
+                        <div class="mt-4 w-full py-2 px-3 rounded-xl bg-white/10 group-hover:bg-pink-500/30 text-xs font-medium flex items-center justify-center gap-1.5 transition-colors">
+                            <span>Kunjungi Profil</span>
+                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        </div>
+                    </a>
+
+                    <!-- Facebook -->
+                    <a href="https://facebook.com/search/top?q=Injilia%20Rompas" target="_blank" rel="noopener noreferrer" class="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-5 flex flex-col justify-between hover:bg-white/15 transition-all group">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-300 flex items-center justify-center mb-4">
+                                <i data-lucide="facebook" class="w-5 h-5"></i>
+                            </div>
+                            <span class="text-xs text-brand-200 uppercase tracking-wider">Facebook</span>
+                            <p class="font-semibold text-base mt-1">Injilia Rompas</p>
+                        </div>
+                        <div class="mt-4 w-full py-2 px-3 rounded-xl bg-white/10 group-hover:bg-blue-500/30 text-xs font-medium flex items-center justify-center gap-1.5 transition-colors">
+                            <span>Kunjungi Profil</span>
+                            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-brand-200/80 bg-white py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+            <p class="font-medium text-charcoal">&copy; 2026 Injilia Anugerah Lorina Rompas.</p>
+            <p class="text-xs">Tareran, Minahasa Selatan — Sulawesi Utara</p>
+        </div>
+    </footer>
+
+    <!-- Script Interaktif -->
+    <script>
+        // Inisialisasi ikon Lucide
+        lucide.createIcons();
+
+        // Toggle Menu Mobile
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Tutup menu mobile saat link diklik
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Fungsi Notifikasi Toast
+        let toastTimeout;
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            
+            toastMsg.textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Fungsi Salin Teks ke Clipboard (Kompatibel iFrame)
+        function copyText(text, successMessage) {
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                showToast(successMessage);
+            } catch (err) {
+                showToast('Gagal menyalin teks.');
+            }
+            document.body.removeChild(tempInput);
+        }
+
+        // Fitur Ganti / Muat Foto Profil Terbaru (1000505772.jpg) secara langsung di browser
+        const photoUploadInput = document.getElementById('photo-upload');
+        const profilePhotoImg = document.getElementById('profile-photo');
+
+        photoUploadInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    profilePhotoImg.src = e.target.result;
+                    showToast('Foto profil berhasil diperbarui!');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
+```
