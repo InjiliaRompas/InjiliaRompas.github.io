@@ -65,7 +65,7 @@
 </head>
 <body class="bg-brand-50 text-slate-800 antialiased selection:bg-brand-200 selection:text-brand-900">
 
-    <!-- Notifikasi Toast (Pengganti alert) -->
+    <!-- Notifikasi Toast -->
     <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
         <div class="bg-charcoal text-white px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 border border-slate-700">
             <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-400"></i>
@@ -148,32 +148,24 @@
                     </div>
                 </div>
 
-                <!-- Kolom Foto Profil (Menggunakan InjiliaRompass.jpg) -->
+                <!-- Kolom Foto Profil (Mendukung GitHub Pages dengan Fallback Ekstensi Otomatis) -->
                 <div class="lg:col-span-5 flex flex-col items-center">
-                    <label for="photo-upload" class="relative group w-64 h-80 sm:w-72 sm:h-96 rounded-3xl p-2 bg-white shadow-xl border border-brand-200/80 rotate-1 hover:rotate-0 transition-all duration-300 cursor-pointer block" id="photo-dropzone" title="Ketuk untuk memilih foto InjiliaRompass.jpg">
-                        <div class="w-full h-full rounded-2xl overflow-hidden relative bg-brand-100 flex flex-col items-center justify-center">
-                            <!-- Referensi langsung ke file InjiliaRompass.jpg -->
+                    <div class="relative group w-64 h-80 sm:w-72 sm:h-96 rounded-3xl p-2 bg-white shadow-xl border border-brand-200/80 rotate-1 hover:rotate-0 transition-all duration-300">
+                        <div class="w-full h-full rounded-2xl overflow-hidden relative bg-brand-100 flex items-center justify-center">
                             <img 
                                 id="profile-photo" 
-                                src="InjiliaRompass.jpg" 
+                                src="./InjiliaRompass.jpg" 
                                 alt="Injilia Anugerah Lorina Rompas" 
                                 class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105 relative z-10"
-                                onerror="this.style.opacity='0'"
                             >
                             
-                            <!-- Panduan di dalam bingkai jika foto belum dipilih di mode Preview -->
-                            <div class="absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-brand-800 bg-brand-100/90">
-                                <div class="w-14 h-14 rounded-2xl bg-white text-brand-600 shadow-sm flex items-center justify-center mb-3">
-                                    <i data-lucide="camera" class="w-7 h-7"></i>
+                            <!-- Fallback jika file belum terunggah di GitHub -->
+                            <div id="photo-fallback" class="hidden absolute inset-0 flex-col items-center justify-center p-6 text-center text-brand-800 bg-brand-100">
+                                <div class="w-16 h-16 rounded-2xl bg-white text-brand-600 shadow-sm flex items-center justify-center font-serif font-bold text-2xl mb-3">
+                                    IR
                                 </div>
-                                <span class="font-bold text-sm text-charcoal">Ketuk Bingkai Ini</span>
-                                <span class="text-xs text-slate-600 mt-1">untuk menampilkan foto <br><strong class="text-brand-700">InjiliaRompass.jpg</strong> di layar ini</span>
-                            </div>
-
-                            <!-- Overlay Hover -->
-                            <div class="absolute inset-0 z-20 bg-charcoal/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-white p-4 text-center">
-                                <i data-lucide="camera" class="w-7 h-7 mb-2"></i>
-                                <span class="text-sm font-semibold">Ganti Foto Profil</span>
+                                <span class="font-bold text-sm text-charcoal">Injilia Rompas</span>
+                                <span class="text-xs text-slate-600 mt-1">Pastikan file <code class="bg-white px-1.5 py-0.5 rounded text-brand-700 font-mono">InjiliaRompass.jpg</code> sudah di-upload ke repository GitHub yang sama dengan <code class="bg-white px-1.5 py-0.5 rounded text-brand-700 font-mono">index.html</code></span>
                             </div>
                         </div>
 
@@ -182,15 +174,6 @@
                             <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
                             <span class="text-xs font-semibold text-charcoal">Mahasiswi Manajemen</span>
                         </div>
-                    </label>
-                    <input type="file" id="photo-upload" accept="image/*" class="hidden">
-
-                    <!-- Tombol Bantuan Unggah Foto di Bawah Gambar -->
-                    <div class="mt-7 flex flex-col items-center gap-1.5">
-                        <button type="button" onclick="document.getElementById('photo-upload').click()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-charcoal text-white text-xs font-semibold hover:bg-brand-600 transition-colors shadow-sm">
-                            <i data-lucide="image-plus" class="w-4 h-4"></i>
-                            <span>Pilih Foto (InjiliaRompass.jpg)</span>
-                        </button>
                     </div>
                 </div>
 
@@ -215,7 +198,6 @@
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Item Biodata -->
                     <div class="p-4 rounded-2xl bg-brand-50/70 border border-brand-100 flex items-start gap-3.5">
                         <div class="p-2.5 rounded-xl bg-white text-brand-600 shadow-xs shrink-0">
                             <i data-lucide="calendar" class="w-5 h-5"></i>
@@ -279,7 +261,7 @@
             </div>
         </section>
 
-        <!-- Section: Pendidikan & Pengalaman Organisasi (2 Kolom pada Desktop) -->
+        <!-- Section: Pendidikan & Pengalaman Organisasi -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
             
             <!-- Kolom Pendidikan -->
@@ -345,7 +327,6 @@
                     </div>
 
                     <div class="space-y-4">
-                        <!-- Pengalaman 1 -->
                         <div class="p-4 rounded-2xl bg-brand-50/60 hover:bg-brand-50 border border-brand-100 transition-colors flex items-start justify-between gap-4">
                             <div>
                                 <div class="flex items-center gap-2 mb-1">
@@ -357,7 +338,6 @@
                             <i data-lucide="wallet" class="w-5 h-5 text-brand-500 shrink-0 mt-1"></i>
                         </div>
 
-                        <!-- Pengalaman 2 -->
                         <div class="p-4 rounded-2xl bg-brand-50/60 hover:bg-brand-50 border border-brand-100 transition-colors flex items-start justify-between gap-4">
                             <div>
                                 <div class="flex items-center gap-2 mb-1">
@@ -369,7 +349,6 @@
                             <i data-lucide="crown" class="w-5 h-5 text-amber-600 shrink-0 mt-1"></i>
                         </div>
 
-                        <!-- Pengalaman 3 -->
                         <div class="p-4 rounded-2xl bg-brand-50/60 hover:bg-brand-50 border border-brand-100 transition-colors flex items-start justify-between gap-4">
                             <div>
                                 <div class="flex items-center gap-2 mb-1">
@@ -381,7 +360,6 @@
                             <i data-lucide="wallet" class="w-5 h-5 text-brand-500 shrink-0 mt-1"></i>
                         </div>
 
-                        <!-- Pengalaman 4 -->
                         <div class="p-4 rounded-2xl bg-brand-50/60 hover:bg-brand-50 border border-brand-100 transition-colors flex items-start justify-between gap-4">
                             <div>
                                 <div class="flex items-center gap-2 mb-1">
@@ -393,7 +371,6 @@
                             <i data-lucide="users" class="w-5 h-5 text-brand-500 shrink-0 mt-1"></i>
                         </div>
 
-                        <!-- Pengalaman 5 -->
                         <div class="p-4 rounded-2xl bg-brand-50/60 hover:bg-brand-50 border border-brand-100 transition-colors flex items-start justify-between gap-4">
                             <div>
                                 <div class="flex items-center gap-2 mb-1">
@@ -596,10 +573,33 @@
         </div>
     </footer>
 
-    <!-- Script Interaktif -->
+    <!-- Script Interaktif & Penanganan Gambar GitHub Pages -->
     <script>
-        // Inisialisasi ikon Lucide
         lucide.createIcons();
+
+        // Penanganan otomatis variasi nama/ekstensi file di GitHub Pages (Case-Sensitive)
+        const profileImg = document.getElementById('profile-photo');
+        const photoFallback = document.getElementById('photo-fallback');
+        const candidatePaths = [
+            './InjiliaRompass.jpg',
+            './InjiliaRompass.JPG',
+            './InjiliaRompass.jpeg',
+            './InjiliaRompass.png',
+            './injiliarompass.jpg',
+            './InjiliaRompas.jpg'
+        ];
+        let attemptIndex = 0;
+
+        profileImg.addEventListener('error', () => {
+            attemptIndex++;
+            if (attemptIndex < candidatePaths.length) {
+                profileImg.src = candidatePaths[attemptIndex];
+            } else {
+                profileImg.classList.add('hidden');
+                photoFallback.classList.remove('hidden');
+                photoFallback.classList.add('flex');
+            }
+        });
 
         // Toggle Menu Mobile
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -609,7 +609,6 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // Tutup menu mobile saat link diklik
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
@@ -631,7 +630,7 @@
             }, 3000);
         }
 
-        // Fungsi Salin Teks ke Clipboard (Kompatibel iFrame)
+        // Fungsi Salin Teks ke Clipboard
         function copyText(text, successMessage) {
             const tempInput = document.createElement('input');
             tempInput.value = text;
@@ -645,79 +644,6 @@
             }
             document.body.removeChild(tempInput);
         }
-
-        // Fitur Muat & Simpan Permanen Foto Profil Terbaru di Browser
-        const photoUploadInput = document.getElementById('photo-upload');
-        const profilePhotoImg = document.getElementById('profile-photo');
-        const photoDropzone = document.getElementById('photo-dropzone');
-        const STORAGE_KEY = 'injilia_profile_photo_v4';
-
-        // Muat foto dari localStorage jika sebelumnya sudah dipilih di Preview
-        window.addEventListener('DOMContentLoaded', () => {
-            try {
-                const savedPhoto = localStorage.getItem(STORAGE_KEY);
-                if (savedPhoto) {
-                    profilePhotoImg.src = savedPhoto;
-                    profilePhotoImg.style.opacity = '1';
-                }
-            } catch (e) {
-                console.warn('Penyimpanan lokal tidak tersedia.');
-            }
-        });
-
-        // Fungsi memproses file gambar dan menyimpannya
-        function applyProfileImage(file) {
-            if (!file || !file.type.startsWith('image/')) return;
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const dataUrl = e.target.result;
-                profilePhotoImg.src = dataUrl;
-                profilePhotoImg.style.opacity = '1';
-                try {
-                    localStorage.setItem(STORAGE_KEY, dataUrl);
-                } catch (err) {
-                    // Tetap tampil meskipun ukuran melebihi batas localStorage
-                }
-                showToast('Foto InjiliaRompass.jpg berhasil ditampilkan!');
-            };
-            reader.readAsDataURL(file);
-        }
-
-        // Event saat memilih file lewat tombol/klik foto
-        photoUploadInput.addEventListener('change', function(event) {
-            applyProfileImage(event.target.files[0]);
-        });
-
-        // Event Drag & Drop foto langsung ke bingkai foto
-        if (photoDropzone) {
-            photoDropzone.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                photoDropzone.classList.add('ring-4', 'ring-brand-400');
-            });
-            photoDropzone.addEventListener('dragleave', () => {
-                photoDropzone.classList.remove('ring-4', 'ring-brand-400');
-            });
-            photoDropzone.addEventListener('drop', (e) => {
-                e.preventDefault();
-                photoDropzone.classList.remove('ring-4', 'ring-brand-400');
-                if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-                    applyProfileImage(e.dataTransfer.files[0]);
-                }
-            });
-        }
-
-        // Event saat menempel gambar langsung (Paste / Ctrl+V) di halaman
-        window.addEventListener('paste', function(event) {
-            const items = (event.clipboardData || event.originalEvent.clipboardData).items;
-            for (let index in items) {
-                const item = items[index];
-                if (item.kind === 'file') {
-                    const blob = item.getAsFile();
-                    applyProfileImage(blob);
-                    break;
-                }
-            }
-        });
     </script>
 </body>
 </html>
